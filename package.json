@@ -1,0 +1,15 @@
+{
+  "name": "echo-text-action",
+  "version": "1.0.0",
+  "description": "A simple custom GitHub Action that returns some text.",
+  "main": "index.js",
+  "dependencies": {
+    "@actions/core": "^1.10.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.0"
+  },
+  "scripts": {
+    "build": "ncc build index.js -o dist"
+  }
+}
