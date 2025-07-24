@@ -1,7 +1,6 @@
 # action-fourcalver
 
-Outputs a calver string in the format `{year}.{month}.{day}.{seconds-in-day}`
-(UTC).
+Outputs a calver string in the format `{year}.{month}.{day}.{revision}` (UTC).
 
 ## What is this?
 
@@ -9,10 +8,16 @@ This GitHub Action generates a calendar versioning (calver) string based on the
 current UTC date and time. The format is:
 
 ```
-{year}.{month}.{day}.{seconds-in-day}
+{year}.{month}.{day}.{revision}
 ```
 
-For example: `2025.07.24.43200` (for July 24, 2025, 12:00:00 UTC)
+Where:
+- `year`: 4-digit year (UTC)
+- `month`: 1- or 2-digit month (UTC, not zero-padded)
+- `day`: 1- or 2-digit day (UTC, not zero-padded)
+- `revision`: A value mapped percent-wise from seconds since midnight UTC (0-86399) to 0-65534 (C# revision version range)
+
+For example: `2025.7.24.32767` (for July 24, 2025, 12:00:00 UTC)
 
 ## Usage
 
@@ -36,14 +41,14 @@ act --workflows ".github/workflows/test-workflow.yml" --job "test-job"
 
 ## Output
 
-- `result`: The calver string, e.g., `2025.07.24.43200`
+- `result`: The calver string, e.g., `2025.7.24.32767`
 
 ## Calver Format
 
 - `year`: 4-digit year (UTC)
-- `month`: 2-digit month (UTC)
-- `day`: 2-digit day (UTC)
-- `seconds-in-day`: Number of seconds since midnight UTC
+- `month`: 1- or 2-digit month (UTC, not zero-padded)
+- `day`: 1- or 2-digit day (UTC, not zero-padded)
+- `revision`: Number between 0 and 65534, mapped percent-wise from seconds since midnight UTC
 
 ## To release
 

@@ -7,12 +7,14 @@ async function run() {
   try {
     const now = new Date();
     const year = now.getUTCFullYear();
-    const month = String(now.getUTCMonth() + 1).padStart(2, '0');
-    const day = String(now.getUTCDate()).padStart(2, '0');
+    const month = now.getUTCMonth() + 1;
+    const day = now.getUTCDate();
     const secondsInDay =
       now.getUTCHours() * 3600 + now.getUTCMinutes() * 60 + now.getUTCSeconds();
-	// Map the secondsInDay value to fit inside a C# revision version (0-65534).
-	const modifiedRevisionVersion = secondsInDay;
+    // Map secondsInDay (0-86399) to 0-65534 percent-wise for C# revision version
+    const maxSeconds = 24 * 60 * 60 - 1; // 86399
+    const maxRevision = 65534;
+    const modifiedRevisionVersion = Math.round((secondsInDay / maxSeconds) * maxRevision);
     const calver = `${year}.${month}.${day}.${modifiedRevisionVersion}`;
     core.setOutput('result', String(calver));
     console.log(calver);
