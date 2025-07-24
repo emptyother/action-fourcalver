@@ -1,8 +1,8 @@
-name: Echo Text Action
+name: Test Workflow
 on:
   workflow_dispatch:
 jobs:
-  echo-job:
+  test-job:
     runs-on: ubuntu-latest
     steps:
       # - name: Checkout code
