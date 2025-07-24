@@ -1,11 +1,11 @@
-name: 'Caldendar versioning'
-description: 'Returns a calver string as `{year}.{month}.{day}.{seconds-in-day}`.'
+name: 'action-fourcalver'
+description: 'Outputs a calver string in the format {year}.{month}.{day}.{seconds-in-day} (UTC).'
 branding:
-  icon: 'message-square'
+  icon: 'calendar'
   color: 'green'
 outputs:
   result:
-    description: 'A calver string as `{year}.{month}.{day}.{seconds-in-day}`.'
+    description: 'The calver string in the format {year}.{month}.{day}.{seconds-in-day} (UTC)'
 runs:
   using: 'node20'
-  main: 'dist/index.js'
+  main: 'index.js'

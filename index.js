@@ -1,3 +1,5 @@
+// GitHub Action: Outputs a calver string in the format {year}.{month}.{day}.{seconds-in-day} (UTC).
+// See README.md for usage and details.
 const core = require('@actions/core');
 
 // Returns a calver string as a date in the format `{year}.{month}.{day}.{seconds-in-day}`.
@@ -10,8 +12,8 @@ async function run() {
     const secondsInDay =
       now.getUTCHours() * 3600 + now.getUTCMinutes() * 60 + now.getUTCSeconds();
     const calver = `${year}.${month}.${day}.${secondsInDay}`;
+    core.setOutput('result', String(calver));
     console.log(calver);
-    core.setOutput('result', calver);
   } catch (error) {
     core.setFailed(error.message);
   }

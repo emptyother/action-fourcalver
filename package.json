@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "A github action that returns a calver string as `{year}.{month}.{day}.{seconds-in-day}`.",
   "main": "index.js",
+  "repository": {
+	"type": "git",
+	"url": "https://github.com/emptyother/action-fourcalver"
+  },
+  "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.10.0"
   },
