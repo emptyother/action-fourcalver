@@ -8,4 +8,4 @@ outputs:
     description: 'The calver string in the format {year}.{month}.{day}.{revision} (UTC), where month and day are not zero-padded and revision is mapped percent-wise from seconds since midnight UTC (0-86399) to 0-65534.'
 runs:
   using: 'node20'
-  main: 'index.js'
+  main: 'dist/index.js'
