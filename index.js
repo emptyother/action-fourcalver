@@ -11,7 +11,9 @@ async function run() {
     const day = String(now.getUTCDate()).padStart(2, '0');
     const secondsInDay =
       now.getUTCHours() * 3600 + now.getUTCMinutes() * 60 + now.getUTCSeconds();
-    const calver = `${year}.${month}.${day}.${secondsInDay}`;
+	// Map the secondsInDay value to fit inside a C# revision version (0-65534).
+	const modifiedRevisionVersion = secondsInDay;
+    const calver = `${year}.${month}.${day}.${modifiedRevisionVersion}`;
     core.setOutput('result', String(calver));
     console.log(calver);
   } catch (error) {
